@@ -47,22 +47,22 @@ public class Movies {
         frame.setVisible(true);
 
         // Action Listeners
-        addMovie.addActionListener(e-> addList());
-        deleteMovie.addActionListener(e-> deleteList());
+        addMovie.addActionListener(e-> addToList());
+        deleteMovie.addActionListener(e-> deleteFromList());
         updateMovie.addActionListener(e -> updateList());
     }
-    public static void addList() {
+    public static void addToList() {
         String str = JOptionPane.showInputDialog("Add Movie");
         movieList.add(str);
         movieLabel.setText(movieList.toString());
     }
-    public static void deleteList() {
-        String str = JOptionPane.showInputDialog("Delete Movie");
+    public static void deleteFromList() {
+        String str = JOptionPane.showInputDialog("Delete Movie\n" + movieList.toString());
         movieList.removeIf(el -> el.equals(str));
         movieLabel.setText(movieList.toString());
     }
     public static void updateList() {
-        String str = JOptionPane.showInputDialog("Update Movie");
+        String str = JOptionPane.showInputDialog("Update Movie\n" + movieList.toString());
         for (String el : movieList) {
             if (el.equals(str)) {
                 String newStr = JOptionPane.showInputDialog("New Movie");
