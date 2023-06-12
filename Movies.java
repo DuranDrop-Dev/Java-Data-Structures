@@ -14,7 +14,7 @@ public class Movies {
 
         JButton addMovie = new JButton("Add");
         JButton deleteMovie = new JButton("Delete");
-        JButton updateMovie = new JButton("Update");
+        JButton updateMovie = new JButton("Edit");
 
         // Layout
         GridBagConstraints gbc = new GridBagConstraints();
@@ -62,7 +62,7 @@ public class Movies {
         movieLabel.setText(movieList.toString());
     }
     public static void updateList() {
-        String str = JOptionPane.showInputDialog("Update Movie\n" + movieList.toString());
+        String str = JOptionPane.showInputDialog("Edit Movie\n" + movieList.toString());
         for (String el : movieList) {
             if (el.equals(str)) {
                 String newStr = JOptionPane.showInputDialog("New Movie");
