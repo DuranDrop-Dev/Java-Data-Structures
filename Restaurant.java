@@ -45,7 +45,7 @@ public class Restaurant {
         // Random wait time generator
         Random rand = new Random();
         int waitTime = rand.nextInt(30);
-        JOptionPane.showMessageDialog(null,"Your wait time is " + waitTime + " minutes.");
+        JOptionPane.showMessageDialog(null, "Your wait time is " + waitTime + " minutes.");
 
         // Update seating label
         seatLabel.setText(seating.toString());
@@ -53,11 +53,11 @@ public class Restaurant {
         // Prompt client to choose to wait or not
         int toWait = JOptionPane.showConfirmDialog(null, "Would you like to wait?");
         if (toWait == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null,"Thank you for waiting.");
+            JOptionPane.showMessageDialog(null, "Thank you for waiting.");
         } else {
             seating.pop();
             seatLabel.setText(seating.toString());
-            JOptionPane.showMessageDialog(null,"Your name has been removed.");
+            JOptionPane.showMessageDialog(null, "Your name has been removed.");
         }
     }
 }
