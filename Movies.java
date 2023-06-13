@@ -79,11 +79,10 @@ public class Movies {
                     int i = Character.getNumericValue(c);
                     String removeEl = movieList.get(i);
                     movieList.remove(removeEl);
-                    movieLabel.setText(movieList.toString());
                 } else {
                     movieList.removeIf(el -> el.contentEquals(str));
-                    movieLabel.setText(movieList.toString());
                 }
+                movieLabel.setText(movieList.toString());
             } else {
                 JOptionPane.showMessageDialog(null, "Input is incorrect.");
             }
