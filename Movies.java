@@ -52,24 +52,75 @@ public class Movies {
         updateMovie.addActionListener(e -> updateList());
     }
     public static void addToList() {
-        String str = JOptionPane.showInputDialog("Add Movie");
-        movieList.add(str);
-        movieLabel.setText(movieList.toString());
+        try {
+            String str = JOptionPane.showInputDialog("Add Movie");
+            movieList.add(str);
+            movieLabel.setText(movieList.toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Input is incorrect.");
+        }
     }
     public static void deleteFromList() {
-        String str = JOptionPane.showInputDialog("Delete Movie\n" + movieList.toString());
-        movieList.removeIf(el -> el.equals(str));
-        movieLabel.setText(movieList.toString());
+        StringBuilder list = new StringBuilder();
+        int movieListIndex = 0;
+
+        // Display movies in a list with their index #
+        for (String movie : movieList) {
+            list.append(movieListIndex++).append(" : ").append(movie).append("\n");
+        }
+
+        try {
+            String str = JOptionPane.showInputDialog("Delete by index number or movie name\n" + list);
+
+            // Check if string input is a #
+            if (str.length() > 0) {
+                char c = str.charAt(0);
+                if (Character.isDigit(c)) {
+                    int i = Character.getNumericValue(c);
+                    String removeEl = movieList.get(i);
+                    movieList.remove(removeEl);
+                    movieLabel.setText(movieList.toString());
+                } else {
+                    movieList.removeIf(el -> el.contentEquals(str));
+                    movieLabel.setText(movieList.toString());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Input is incorrect.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Input is incorrect.");
+        }
     }
     public static void updateList() {
-        String str = JOptionPane.showInputDialog("Edit Movie\n" + movieList.toString());
-        for (String el : movieList) {
-            if (el.equals(str)) {
-                String newStr = JOptionPane.showInputDialog("New Movie");
-                int index = movieList.indexOf(el);
-                movieList.set(index, newStr);
-            }
+        StringBuilder list = new StringBuilder();
+        int movieListIndex = 0;
+
+        // Display movies in a list with their index #
+        for (String movie : movieList) {
+            list.append(movieListIndex++).append(" : ").append(movie).append("\n");
         }
-        movieLabel.setText(movieList.toString());
+
+        try {
+            String str = JOptionPane.showInputDialog("Edit by index number or movie name\n" + list);
+
+            // Check if string input is a #
+            if (str.length() > 0) {
+                char c = str.charAt(0);
+                if (Character.isDigit(c)) {
+                    int i = Character.getNumericValue(c);
+                    String newStr = JOptionPane.showInputDialog("New Movie Name");
+                    movieList.set(i, newStr);
+                } else {
+                    int i = movieList.indexOf(str);
+                    String newStr = JOptionPane.showInputDialog("New Movie Name");
+                    movieList.set(i, newStr);
+                }
+                movieLabel.setText(movieList.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Input is incorrect.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Input is incorrect.");
+        }
     }
 }
