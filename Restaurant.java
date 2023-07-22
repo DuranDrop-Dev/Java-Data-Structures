@@ -32,7 +32,7 @@ public class Restaurant {
         gbc.gridx=0;
         contentPanel.add(addName, gbc);
 
-        frame.setSize(new Dimension(500, 350));
+        frame.setSize(new Dimension(500, 200));
         frame.setContentPane(mainPanel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
